@@ -75,12 +75,12 @@ const Board = (props) => {
         }
     }
     return (
-        <div style = {{backgroundColor: 'blue', color: 'white'}}>
+        <div style = {{backgroundColor: 'blue', color: 'white', height: '100vh'}}>
             {showModal ? modal() : 
             categories.map((cat, catIdx) => {
                         return (
                             <div key = {cat}
-                            style = {{display: 'inline-block', width: '14vw', textAlign: 'center', height: '100vh', margin: '2vw', marginBottom: 0 }}>
+                            style = {{display: 'inline-block', width: '15vw', textAlign: 'center', margin: '2vw', marginBottom: 0 }}>
                                 <div style = {{borderStyle: 'solid', borderColor: 'white', height: '10vh', paddingTop: '5vh', fontSize: 20, fontWeight: '700'}}>{cat}</div>
                                 {scores.map((score, scoreIdx) => {
                                     return (
