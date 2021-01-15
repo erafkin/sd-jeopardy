@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ausFlag from './imgs/aus.jpg'
 import nzFlag from './imgs/nz.png'
 import walesFlag from './imgs/wales.jpg'
+import nepalFlag from './imgs/nepal.png'
 import chicagoFlag from './imgs/chicago.png'
 import kesha from './imgs/kesha.png'
 import fleetwoodmac from './imgs/fleetwoodmac.png'
@@ -13,8 +14,8 @@ const Board = (props) => {
     const questions = [
         [
         {type: "pic", content: ausFlag}, 
-        {type: 'text', content: "This flag is the only one with 5 sides"},
         {type: 'pic', content: nzFlag},
+        {type: "pic", content: nepalFlag}, 
         {type: 'pic', content: chicagoFlag},
         {type: 'pic', content: walesFlag},
         ],
