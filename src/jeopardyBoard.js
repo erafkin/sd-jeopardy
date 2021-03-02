@@ -57,29 +57,20 @@ const Board = (props) => {
     const [seen, setSeen] = useState(categories.map(cat => scores.map(score => false)))
     const [teams, setTeams] = useState({});
     const [currTeam, setCurrTeam] = useState("")
-    const [currScore, setCurrScore] = useState(0)
+    const [currScore, setCurrScore] = useState(100)
 
     const modal = () => {
         if(idx1!==undefined && idx2!==undefined){
             console.log(questions[idx1][idx2].type, questions[idx1][idx2].content)
             return (
             <div style = {{width: '100vw', height: '100vh', backgroundColor: 'blue', color: 'white', textAlign: 'center', fontSize: 40}}>
-                <div style = {{textAlign: 'right', paddingRight: '10vw', marginBottom: '10vh'}}onClick = {() => {setShowModal(false); setCurrScore(0)}}>X</div>
+                <div style = {{textAlign: 'right', paddingRight: '10vw', marginBottom: '10vh'}}onClick = {() => {setShowModal(false); setCurrScore(100)}}>X</div>
                 {questions[idx1][idx2].type === "text" ?
                 <div style = {{fontSize: 60, margin: '10vw'}}> {questions[idx1][idx2].content} </div>
                 :
                 <img src = {questions[idx1][idx2].content} alt = "content" style= {{height:'300px', }}/>
                 }
                 <div>
-                {Object.keys(teams).map((team) => {
-                    return(
-                        <div>
-                            {team}: {teams[team]}
-                            <button onClick = {() => setTeams({...teams, [team]: teams[team] + currScore})}> + </button>
-                            <button onClick = {() => setTeams({...teams, [team]: teams[team] - currScore})}> - </button>
-                        </div>
-                    ) 
-                })}
                 </div>
                 
             </div>
@@ -93,14 +84,14 @@ const Board = (props) => {
         <div style = {{backgroundColor: 'blue', color: 'white',}}>
             <div style = {{padding: 10}}>
                 <div> Teams </div>
-                <input type = "text" onChange = {(event) => setCurrTeam(event.target.value)}/>
-                <button onClick = {() => setTeams({...teams, [currTeam]: 0})}>add team</button>
+                <input type = "text" onChange = {(event) => setCurrTeam(event.target.value)} value={currTeam}/>
+                <button onClick = {() => {setTeams({...teams, [currTeam]: 0}); setCurrTeam("")}}>add team</button>
                 {Object.keys(teams).map((team) => {
                     return(
                         <div>
                             {team}: {teams[team]}
-                            <button onClick = {() => setTeams({...teams, [team]: teams[team] + 100})}> + </button>
-                            <button onClick = {() => setTeams({...teams, [team]: teams[team] - 100})}> - </button>
+                            <button onClick = {() => setTeams({...teams, [team]: teams[team] + currScore})}> + </button>
+                            <button onClick = {() => setTeams({...teams, [team]: teams[team] - currScore})}> - </button>
                         </div>
                     ) 
                 })}
